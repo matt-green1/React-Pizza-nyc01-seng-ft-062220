@@ -1,14 +1,22 @@
 import React from "react"
 
-const Pizza = () => {
-  return(
-    <tr>
-      <td>{"Replace Me With Pizza Topping"}</td>
-      <td>{"Replace Me With Pizza Size"}</td>
-      <td>{"Replace Me With Vegatarian"}</td>
-      <td><button type="button" className="btn btn-primary">Edit Pizza</button></td>
-    </tr>
-  )
+class Pizza extends React.Component {
+  //console.log(props.fillEditForm)
+  
+  editFormHelper =() => {
+    this.props.fillEditForm(this.props.pizzaObject)
+  }
+  
+  render() {
+    return(
+      <tr>
+        <td>{this.props.pizzaObject.topping}</td>
+        <td>{this.props.pizzaObject.size}</td>
+        <td>{this.props.pizzaObject.vegetarian === false ? "No" : "Yes"}</td>
+        <td><button onClick={this.editFormHelper} type="button" className="btn btn-primary">Edit Pizza</button></td>
+      </tr>
+    )
+  }
 }
 
 export default Pizza
